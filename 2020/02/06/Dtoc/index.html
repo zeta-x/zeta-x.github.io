@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="消失的博客">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="anemone">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="DTOC"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="vanish"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>DTOC - vanish</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/reset.css">
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!--Favicon-->
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+<!-- Menu -->
+<!-- Navigation -->
+<header>
+    <div class="logo">
+        <a href="/">vanish</a>
+    </div><!-- end logo -->
+
+    <div id="menu_icon"></div>
+    <nav>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+            
+        </ul>
+    </nav><!-- end navigation menu -->
+
+    <div class="footer clearfix">
+        <ul class="social clearfix">
+            
+            
+                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
+            
+            
+                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
+            
+            
+                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            
+            
+            
+            
+        </ul><!-- end social -->
+
+        <div class="rights">
+            <p>Copyright © 2014 magnetic.</p>
+        </div><!-- end rights -->
+    </div ><!-- end footer -->
+</header><!-- end header -->
+
+
+<!-- Main Content -->
+<section class="main clearfix">
+
+    <section class="top" style="background: url('https://z3.ax1x.com/2021/08/27/hMdXn0.png');">
+        <div class="wrapper content_header clearfix">
+            
+
+<div class="work_nav">
+
+    <ul class="btn clearfix">
+        
+        <li><a href="/2020/03/09/CMOS/" class="previous" data-title="CMOS"></a></li>
+        
+        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
+        
+        <li><a href="/2018/10/05/vanish/" class="next" data-title="Vanish"></a></li>
+        
+    </ul>
+
+</div><!-- end work_nav -->
+            <h1 class="title">DTOC</h1>
+        </div>
+    </section><!-- end top -->
+
+    <section class="wrapper">
+        <div class="content">
+
+            <!-- Gallery -->
+            
+
+            <!-- Content -->
+            <h2 id="desc-Decimal-to-character"><a href="#desc-Decimal-to-character" class="headerlink" title="desc: Decimal to character"></a>desc: Decimal to character</h2><p>把十进制转换为字符类型，显卡显示区只能显示字符。</p>
+<h3 id="code-segment"><a href="#code-segment" class="headerlink" title="code segment"></a>code segment</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">db 10 dup(0) ;define bytes</span><br><span class="line">dw 10 ; define word</span><br><span class="line">dd 12666        ;7A31_low 16bit is in the front of the address</span><br><span class="line">db 10 dup(0);</span><br><span class="line">data ends ;数据段</span><br><span class="line">stack segment</span><br><span class="line">dw 8 dup(0)</span><br><span class="line">stack ends ;栈段</span><br><span class="line">code segment</span><br><span class="line">start:mov bx,data</span><br><span class="line">      mov ds,bx</span><br><span class="line">      mov si,0</span><br><span class="line">      mov bx,0</span><br><span class="line">      mov ax,0B800H ;0B800H 显存地址</span><br><span class="line">      mov es,ax</span><br><span class="line">      mov ax,stack</span><br><span class="line">      mov ss,ax</span><br><span class="line">      mov sp,16</span><br><span class="line">      call dtoc ;十进制转换为字符类型</span><br><span class="line">      call count ;记录有多少个字符</span><br><span class="line">      call transfer</span><br><span class="line">      call transfer_back ;将倒序字符反转</span><br><span class="line">      call show_str ;打印出字符</span><br><span class="line">      mov ax,4c00H</span><br><span class="line">      int 21h</span><br></pre></td></tr></table></figure>
+
+<h3 id="dtoc"><a href="#dtoc" class="headerlink" title="dtoc"></a>dtoc</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dtoc:</span><br><span class="line">    call divdw ;避免溢出除法</span><br><span class="line">    add cx,30H ;每个字符比数字大30H(16进制)</span><br><span class="line">    mov ds:[bx],cl</span><br><span class="line">    inc bx</span><br><span class="line">    add ax,dx ;dx为高16位，ax为低16位</span><br><span class="line">    mov cx,ax ;cx为0时则无新的余数产生</span><br><span class="line">    jcxz over</span><br><span class="line">    jmp short dtoc</span><br></pre></td></tr></table></figure>
+
+<p>divdw:<br>公式 X/n=(H*65536+L)/n=(H/n)*65536+(L/n)<br>H=int(x/65536)<br>L=rem(x/65536)<br>具体证明见汇编语言（第三版） 附注5</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">divdw:</span><br><span class="line">    mov dx,ds:[14];ds[14] high 16bit</span><br><span class="line">    mov ax,0;low 16bit</span><br><span class="line">    div word ptr ds:[10]; 商存在ax，余数存在dx.</span><br><span class="line">    push ax</span><br><span class="line">    mov ax,ds:[12]</span><br><span class="line">    div word ptr ds:[10];</span><br><span class="line">    mov cx,dx;cx the remainder</span><br><span class="line">    pop dx</span><br><span class="line">    mov ds:[12],ax</span><br><span class="line">    mov ds:[14],dx</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+<p>show_str:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">show_str:</span><br><span class="line">    mov ch,0</span><br><span class="line">    mov cl,ds:[bx]</span><br><span class="line">    jcxz over</span><br><span class="line">    mov dl,ds:[bx]</span><br><span class="line">    mov dh,11000010b ;闪烁</span><br><span class="line">    mov es:[si],dx ;地址偶数位为字符，奇数位为模式</span><br><span class="line">    inc bx</span><br><span class="line">    add si,2</span><br><span class="line">    jmp short show_str</span><br></pre></td></tr></table></figure>
+
+
+            <!-- Tags -->
+            
+
+
+<div class="tags">
+    <a href="/tags/asm/">asm</a>
+</div>
+
+
+
+            <!-- Comments -->
+            <div>
+                
+
+
+
+
+            </div>
+        </div><!-- end content -->
+    </section>
+</section><!-- end main -->
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+
+<script src="/js/jquery.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
